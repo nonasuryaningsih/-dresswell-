@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaletteFit - Studio Mix & Match Warna Pakaian</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#faf7f5',
+                            100: '#f4ede6',
+                            200: '#e7d8ca',
+                            500: '#c29b7f',
+                            800: '#6b4f3a',
+                            900: '#3a2b1f',
+                        },
+                        cream: '#FDFBF7',
+                        charcoal: '#232323'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDFBF7;
+            color: #232323;
+        }
+        .color-card:hover {
+            transform: translateY(-4px);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDFBF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e7d8ca;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c29b7f;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-200 selection:text-brand-900">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-brand-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-brand-500 inline-block flex items-center justify-center text-white font-serif font-bold text-lg">P</span>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-charcoal">PaletteFit</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-700">
+                    <a href="#studio" class="hover:text-brand-800 transition">Studio Canvas</a>
+                    <a href="#rules" class="hover:text-brand-800 transition">Teori Warna</a>
+                    <a href="#palettes" class="hover:text-brand-800 transition">Inspirasi Palet</a>
+                    <a href="#undertone" class="hover:text-brand-800 transition">Tes Skin Tone</a>
+                </div>
+
+                <a href="#studio" class="bg-brand-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-brand-800 transition shadow-sm hover:shadow">
+                    Coba Studio <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 bg-brand-100/80 px-4 py-1.5 rounded-full text-brand-800 text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-sparkles"></i> Panduan Styling & Warna Pakaian
+                </div>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-charcoal leading-[1.15]">
+                    Kuasai Seni <span class="italic font-normal text-brand-800">Mix & Match</span> Warna Outfit Kamu
+                </h1>
+                <p class="text-gray-600 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Jangan ragu lagi saat memilih baju! Temukan kombinasi warna busana yang harmonis, estetik, dan meningkatkan rasa percaya diri kamu setiap hari.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#studio" class="bg-brand-900 text-white px-7 py-3.5 rounded-full font-medium hover:bg-brand-800 transition shadow-lg shadow-brand-900/10">
+                        Mulai Eksperimen
+                    </a>
+                    <a href="#rules" class="bg-white border border-brand-200 text-brand-900 px-7 py-3.5 rounded-full font-medium hover:bg-brand-50 transition">
+                        Pelajari Teori Warna
+                    </a>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 relative">
+                <div class="relative mx-auto w-full max-w-md bg-white p-6 rounded-3xl shadow-2xl border border-brand-100">
+                    <div class="absolute -top-4 -right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        Live Preview
+                    </div>
+                    <!-- Visual Card Showcase -->
+                    <div class="space-y-4">
+                        <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Kombinasi Hari Ini: Soft Earth Tone</div>
+                        <div class="grid grid-cols-4 gap-2 h-36 rounded-2xl overflow-hidden shadow-inner">
+                            <div class="bg-[#8C6D58] h-full flex flex-col justify-end p-2 text-white text-[10px]">Atasan</div>
+                            <div class="bg-[#E3D5CA] h-full flex flex-col justify-end p-2 text-gray-800 text-[10px]">Bawahan</div>
+                            <div class="bg-[#D5BDAF] h-full flex flex-col justify-end p-2 text-gray-800 text-[10px]">Tas</div>
+                            <div class="bg-[#4A3B32] h-full flex flex-col justify-end p-2 text-white text-[10px]">Sepatu</div>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 text-xs text-gray-500">
+                            <span><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Kontras Seimbang</span>
+                            <span><i class="fa-solid fa-heart text-rose-400 mr-1"></i> Favorit 98% Styling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio Mix & Match Section -->
+    <section id="studio" class="py-20 bg-brand-50 border-y border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-charcoal">Studio Mix & Match Interaktif</h2>
+                <p class="text-gray-600 mt-2">Pilih warna untuk setiap item pakaian dan lihat bagaimana kombinasi warna tersebut bekerja secara visual.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controls Side (Left) -->
+                <div class="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-100 space-y-6">
+                    <h3 class="font-semibold text-lg border-b border-gray-100 pb-3 flex justify-between items-center">
+                        <span>Pilih Warna Item</span>
+                        <button id="btn-randomize" class="text-xs text-brand-800 hover:text-brand-900 bg-brand-100 px-3 py-1 rounded-full font-medium transition">
+                            <i class="fa-solid fa-dice mr-1"></i> Acak Kombinasi
+                        </button>
+                    </h3>
+
+                    <!-- Color Pickers for items -->
+                    <!-- Atasan -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-700 flex justify-between">
+                            <span>Atasan (Shirt/Top)</span>
+                            <span id="hex-top" class="font-mono text-xs text-gray-400">#4F46E5</span>
+                        </label>
+                        <div class="flex items-center gap-3">
+                            <input type="color" id="picker-top" value="#4F46E5" class="w-10 h-10 rounded-lg cursor-pointer border-0">
+                            <div class="flex-1 flex gap-1.5 overflow-x-auto pb-1" id="presets-top">
+                                <!-- Preset color dots injected via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bawahan -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-700 flex justify-between">
+                            <span>Bawahan (Pants/Skirt)</span>
+                            <span id="hex-bottom" class="font-mono text-xs text-gray-400">#1E293B</span>
+                        </label>
+                        <div class="flex items-center gap-3">
+                            <input type="color" id="picker-bottom" value="#1E293B" class="w-10 h-10 rounded-lg cursor-pointer border-0">
+                            <div class="flex-1 flex gap-1.5 overflow-x-auto pb-1" id="presets-bottom"></div>
+                        </div>
+                    </div>
+
+                    <!-- Outer/Aksesoris -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-700 flex justify-between">
+                            <span>Outer / Aksesori</span>
+                            <span id="hex-outer" class="font-mono text-xs text-gray-400">#CBD5E1</span>
+                        </label>
+                        <div class="flex items-center gap-3">
+                            <input type="color" id="picker-outer" value="#CBD5E1" class="w-10 h-10 rounded-lg cursor-pointer border-0">
+                            <div class="flex-1 flex gap-1.5 overflow-x-auto pb-1" id="presets-outer"></div>
+                        </div>
+                    </div>
+
+                    <!-- Sepatu -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-700 flex justify-between">
+                            <span>Sepatu (Shoes)</span>
+                            <span id="hex-shoes" class="font-mono text-xs text-gray-400">#FFFFFF</span>
+                        </label>
+                        <div class="flex items-center gap-3">
+                            <input type="color" id="picker-shoes" value="#FFFFFF" class="w-10 h-10 rounded-lg cursor-pointer border-0">
+                            <div class="flex-1 flex gap-1.5 overflow-x-auto pb-1" id="presets-shoes"></div>
+                        </div>
+                    </div>
+
+                    <!-- Preset Quick Palettes -->
+                    <div class="pt-4 border-t border-gray-100">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-3">Paket Palet Siap Pakai</span>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                            <button onclick="applyPalette(['#F5F5DC', '#2C3E50', '#D4AF37', '#FFFFFF'])" class="p-2 text-left border rounded-xl hover:border-brand-500 text-xs font-medium text-gray-600 transition">Minimalist Chic</button>
+                            <button onclick="applyPalette(['#8B4513', '#D2B48C', '#F5FEFD', '#3B2F2F'])" class="p-2 text-left border rounded-xl hover:border-brand-500 text-xs font-medium text-gray-600 transition">Warm Earthy</button>
+                            <button onclick="applyPalette(['#2B2D42', '#8D99AE', '#EDF2F4', '#D90429'])" class="p-2 text-left border rounded-xl hover:border-brand-500 text-xs font-medium text-gray-600 transition">Modern Classic</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Side (Right) -->
+                <div class="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-100 flex flex-col items-center">
+                    
+                    <!-- Outfit Visualizer -->
+                    <div class="w-full max-w-sm flex flex-col items-center gap-3 py-6 px-4 bg-gray-50 rounded-2xl border border-gray-100 relative">
+                        
+                        <!-- Outer Preview (Card back or layered) -->
+                        <div id="preview-outer-bg" class="w-full p-4 rounded-xl transition-all duration-300 flex flex-col items-center gap-3 shadow-sm border border-black/5" style="background-color: #CBD5E1">
+                            <div class="text-[10px] uppercase font-bold tracking-widest text-black/40">Outer / Jaket / Cardigan</div>
+                            
+                            <!-- Top Preview -->
+                            <div id="preview-top" class="w-4/5 h-24 rounded-xl shadow-md transition-all duration-300 flex items-center justify-center relative overflow-hidden" style="background-color: #4F46E5">
+                                <span class="text-xs font-semibold tracking-wider text-white drop-shadow">ATASAN</span>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Preview -->
+                        <div id="preview-bottom" class="w-3/4 h-32 rounded-xl shadow-md transition-all duration-300 flex items-center justify-center" style="background-color: #1E293B">
+                            <span class="text-xs font-semibold tracking-wider text-white drop-shadow">BAWAHAN</span>
+                        </div>
+
+                        <!-- Shoes Preview -->
+                        <div id="preview-shoes" class="w-1/2 h-12 rounded-xl shadow-md transition-all duration-300 flex items-center justify-center border border-black/5" style="background-color: #FFFFFF">
+                            <span class="text-xs font-semibold tracking-wider text-gray-700 drop-shadow">SEPATU</span>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation Card -->
+                    <div class="w-full mt-6 bg-brand-50/70 p-4 rounded-2xl border border-brand-100 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-900 uppercase tracking-wider">Analisa Harmoni Warna</span>
+                            <span id="harmony-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">Seimbang</span>
+                        </div>
+                        <p id="harmony-feedback" class="text-xs text-gray-600 leading-relaxed">
+                            Kombinasi warna memiliki kontras yang baik. Perpaduan atasan dan bawahan menciptakan efek visual yang harmonis.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Theory Rules Section -->
+    <section id="rules" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-charcoal">4 Formulasi Teori Warna Utama</h2>
+            <p class="text-gray-600 mt-2">Gunakan roda warna sebagai panduan untuk memadukan outfit tanpa takut berlebihan.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Complementary -->
+            <div class="bg-white p-6 rounded-3xl border border-brand-100 shadow-sm hover:shadow-md transition space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-arrows-left-right"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl text-charcoal">Komplementer</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Warna yang berseberangan di roda warna (misal: Biru & Oranye). Memberikan kesan berani, *playful*, dan kontras tinggi.
+                </p>
+                <div class="flex h-6 rounded-lg overflow-hidden">
+                    <div class="w-1/2 bg-blue-600"></div>
+                    <div class="w-1/2 bg-orange-500"></div>
+                </div>
+            </div>
+
+            <!-- Analogous -->
+            <div class="bg-white p-6 rounded-3xl border border-brand-100 shadow-sm hover:shadow-md transition space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-[#10B981] fa-layer-group"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl text-charcoal">Analogous</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Warna yang berdampingan di roda warna (misal: Hijau, Hijau-Kuning, Kuning). Sangat tenang, harmonis, dan nyaman dilihat.
+                </p>
+                <div class="flex h-6 rounded-lg overflow-hidden">
+                    <div class="w-1/3 bg-teal-600"></div>
+                    <div class="w-1/3 bg-emerald-500"></div>
+                    <div class="w-1/3 bg-lime-400"></div>
+                </div>
+            </div>
+
+            <!-- Monochrome -->
+            <div class="bg-white p-6 rounded-3xl border border-brand-100 shadow-sm hover:shadow-md transition space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-droplet"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl text-charcoal">Monokromatik</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Menggunakan satu warna dasar namun dengan intensitas/skala terang-gelap berbeda (tints & shades). Terlihat elegan dan jenjang.
+                </p>
+                <div class="flex h-6 rounded-lg overflow-hidden">
+                    <div class="w-1/3 bg-slate-900"></div>
+                    <div class="w-1/3 bg-slate-500"></div>
+                    <div class="w-1/3 bg-slate-300"></div>
+                </div>
+            </div>
+
+            <!-- Triadic -->
+            <div class="bg-white p-6 rounded-3xl border border-brand-100 shadow-sm hover:shadow-md transition space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-shapes"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl text-charcoal">Triadik</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    3 warna yang membentuk segitiga sama sisi pada roda warna (misal: Merah, Kuning, Biru). Memberi efek ceria dan dinamis.
+                </p>
+                <div class="flex h-6 rounded-lg overflow-hidden">
+                    <div class="w-1/3 bg-red-500"></div>
+                    <div class="w-1/3 bg-amber-400"></div>
+                    <div class="w-1/3 bg-blue-500"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preset Palette Inspiration Gallery -->
+    <section id="palettes" class="py-20 bg-brand-50 border-t border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-charcoal">Inspirasi Palet Warna Populer</h2>
+                    <p class="text-gray-600 mt-2">Salin kode HEX untuk koleksi pakaian Anda selanjutnya.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Palette Card 1 -->
+                <div class="bg-white rounded-3xl p-5 border border-brand-100 shadow-sm space-y-4">
+                    <div class="h-44 rounded-2xl overflow-hidden grid grid-cols-4 shadow-inner">
+                        <div class="bg-[#2D3142] h-full"></div>
+                        <div class="bg-[#4F5D75] h-full"></div>
+                        <div class="bg-[#BFC0C0] h-full"></div>
+                        <div class="bg-[#EF8354] h-full"></div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-semibold text-gray-800">Urban Casual</h4>
+                        <span class="text-xs bg-gray-100 px-2.5 py-1 rounded-full text-gray-600">Cool Tone</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-mono pt-2 border-t border-gray-100">
+                        <span>#2D3142</span>
+                        <span>#4F5D75</span>
+                        <span>#BFC0C0</span>
+                        <span>#EF8354</span>
+                    </div>
+                </div>
+
+                <!-- Palette Card 2 -->
+                <div class="bg-white rounded-3xl p-5 border border-brand-100 shadow-sm space-y-4">
+                    <div class="h-44 rounded-2xl overflow-hidden grid grid-cols-4 shadow-inner">
+                        <div class="bg-[#386641] h-full"></div>
+                        <div class="bg-[#6A994E] h-full"></div>
+                        <div class="bg-[#A7C957] h-full"></div>
+                        <div class="bg-[#F2E8CF] h-full"></div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-semibold text-gray-800">Sage & Cream Warmth</h4>
+                        <span class="text-xs bg-amber-50 px-2.5 py-1 rounded-full text-amber-800">Warm Tone</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-mono pt-2 border-t border-gray-100">
+                        <span>#386641</span>
+                        <span>#6A994E</span>
+                        <span>#A7C957</span>
+                        <span>#F2E8CF</span>
+                    </div>
+                </div>
+
+                <!-- Palette Card 3 -->
+                <div class="bg-white rounded-3xl p-5 border border-brand-100 shadow-sm space-y-4">
+                    <div class="h-44 rounded-2xl overflow-hidden grid grid-cols-4 shadow-inner">
+                        <div class="bg-[#03071E] h-full"></div>
+                        <div class="bg-[#370617] h-full"></div>
+                        <div class="bg-[#9D0208] h-full"></div>
+                        <div class="bg-[#FAA307] h-full"></div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-semibold text-gray-800">Autumn Classic</h4>
+                        <span class="text-xs bg-rose-50 px-2.5 py-1 rounded-full text-rose-800">Bold & Rich</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-mono pt-2 border-t border-gray-100">
+                        <span>#03071E</span>
+                        <span>#370617</span>
+                        <span>#9D0208</span>
+                        <span>#FAA307</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Undertone Mini-Quiz Section -->
+    <section id="undertone" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-brand-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl">
+            <!-- Background Decoration -->
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-brand-800/50 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-2xl relative z-10 space-y-6">
+                <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Kuis Quick Styling</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">Cari Tahu Undertone Warna Kulitmu</h2>
+                <p class="text-brand-100 text-sm sm:text-base leading-relaxed">
+                    Warna pembuluh darah (urat) di pergelangan tanganmu terlihat berwarna apa di bawah sinar matahari?
+                </p>
+
+                <!-- Quiz Options -->
+                <div id="quiz-options" class="space-y-3 pt-2">
+                    <button onclick="checkUndertone('cool')" class="w-full text-left p-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/10 transition flex items-center justify-between">
+                        <span><i class="fa-solid fa-circle text-blue-400 mr-3 text-xs"></i> Keberbiruan atau Keunguan</span>
+                        <span class="text-xs font-semibold bg-white/20 px-3 py-1 rounded-full">Cool Undertone</span>
+                    </button>
+                    <button onclick="checkUndertone('warm')" class="w-full text-left p-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/10 transition flex items-center justify-between">
+                        <span><i class="fa-solid fa-circle text-emerald-400 mr-3 text-xs"></i> Kehijauan atau Olive</span>
+                        <span class="text-xs font-semibold bg-white/20 px-3 py-1 rounded-full">Warm Undertone</span>
+                    </button>
+                    <button onclick="checkUndertone('neutral')" class="w-full text-left p-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/10 transition flex items-center justify-between">
+                        <span><i class="fa-solid fa-circle text-teal-300 mr-3 text-xs"></i> Campuran Hijau & Biru / Samar</span>
+                        <span class="text-xs font-semibold bg-white/20 px-3 py-1 rounded-full">Neutral Undertone</span>
+                    </button>
+                </div>
+
+                <!-- Result Box (Hidden by default) -->
+                <div id="quiz-result" class="hidden p-6 bg-white text-charcoal rounded-2xl space-y-3 transition-all">
+                    <h3 id="result-title" class="font-serif font-bold text-xl"></h3>
+                    <p id="result-desc" class="text-xs text-gray-600 leading-relaxed"></p>
+                    <button onclick="resetQuiz()" class="text-xs font-semibold text-brand-800 underline pt-2">Ulangi Tes</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-brand-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-brand-500 inline-block flex items-center justify-center text-white font-serif font-bold text-xs">P</span>
+                <span class="font-serif font-bold text-lg text-charcoal">PaletteFit</span>
+            </div>
+            <p class="text-xs text-gray-500">© 2026 PaletteFit. Panduan Mix & Match Warna Pakaian Impian Anda.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Preset color swatches
+        const colorPresets = [
+            '#FFFFFF', '#1E293B', '#4F46E5', '#8C6D58', '#E3D5CA',
+            '#10B981', '#F59E0B', '#EF4444', '#EC4899', '#64748B'
+        ];
+
+        // State definition
+        const state = {
+            top: '#4F46E5',
+            bottom: '#1E293B',
+            outer: '#CBD5E1',
+            shoes: '#FFFFFF'
+        };
+
+        // DOM Elements
+        const pickers = {
+            top: document.getElementById('picker-top'),
+            bottom: document.getElementById('picker-bottom'),
+            outer: document.getElementById('picker-outer'),
+            shoes: document.getElementById('picker-shoes')
+        };
+
+        const hexTexts = {
+            top: document.getElementById('hex-top'),
+            bottom: document.getElementById('hex-bottom'),
+            outer: document.getElementById('hex-outer'),
+            shoes: document.getElementById('hex-shoes')
+        };
+
+        const previews = {
+            top: document.getElementById('preview-top'),
+            bottom: document.getElementById('preview-bottom'),
+            outer: document.getElementById('preview-outer-bg'),
+            shoes: document.getElementById('preview-shoes')
+        };
+
+        // Render Preset Dots
+        function initPresets() {
+            const categories = ['top', 'bottom', 'outer', 'shoes'];
+            categories.forEach(cat => {
+                const container = document.getElementById(`presets-${cat}`);
+                container.innerHTML = '';
+                colorPresets.forEach(color => {
+                    const btn = document.createElement('button');
+                    btn.className = 'w-6 h-6 rounded-full border border-black/10 shrink-0 transition hover:scale-110';
+                    btn.style.backgroundColor = color;
+                    btn.onclick = () => {
+                        pickers[cat].value = color;
+                        updateColor(cat, color);
+                    };
+                    container.appendChild(btn);
+                });
+            });
+        }
+
+        // Update color change
+        function updateColor(category, hex) {
+            state[category] = hex;
+            hexTexts[category].textContent = hex.toUpperCase();
+            
+            if (category === 'outer') {
+                previews.outer.style.backgroundColor = hex;
+            } else {
+                previews[category].style.backgroundColor = hex;
+            }
+            
+            analyzeHarmony();
+        }
+
+        // Event Listeners for Pickers
+        Object.keys(pickers).forEach(cat => {
+            pickers[cat].addEventListener('input', (e) => {
+                updateColor(cat, e.target.value);
+            });
+        });
+
+        // Apply Whole Palette
+        function applyPalette(colors) {
+            const keys = ['top', 'bottom', 'outer', 'shoes'];
+            colors.forEach((col, idx) => {
+                if (keys[idx]) {
+                    pickers[keys[idx]].value = col;
+                    updateColor(keys[idx], col);
+                }
+            });
+        }
+
+        // Randomize Combination
+        document.getElementById('btn-randomize').addEventListener('click', () => {
+            const getRandomColor = () => colorPresets[Math.floor(Math.random() * colorPresets.length)];
+            applyPalette([getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]);
+        });
+
+        // Basic Color Contrast & Harmony Evaluator
+        function analyzeHarmony() {
+            const badge = document.getElementById('harmony-badge');
+            const feedback = document.getElementById('harmony-feedback');
+
+            // Simplified evaluation logic based on luminance contrast
+            const topLum = getLuminance(state.top);
+            const bottomLum = getLuminance(state.bottom);
+            const diff = Math.abs(topLum - bottomLum);
+
+            if (diff > 0.4) {
+                badge.className = "px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800";
+                badge.textContent = "Kontras Tinggi & Seimbang";
+                feedback.textContent = "Atasan dan bawahan memiliki perbedaan kecerahan yang sangat jelas. Sangat aman dan menciptakan siluet pakaian yang tegas.";
+            } else if (diff > 0.15) {
+                badge.className = "px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800";
+                badge.textContent = "Soft & Monokromatik";
+                feedback.textContent = "Perpaduan warna bernuansa serupa. Menghasilkan gaya yang elegan, simpel, dan memberikan efek tubuh terlihat lebih jenjang.";
+            } else {
+                badge.className = "px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800";
+                badge.textContent = "Low Contrast";
+                feedback.textContent = "Warna atasan dan bawahan sangat dekat. Disarankan menggunakan outer atau sepatu berwarna kontras sebagai aksen pembatas.";
+            }
+        }
+
+        // Helper to calculate relative luminance
+        function getLuminance(hex) {
+            const rgb = parseInt(hex.slice(1), 16);
+            const r = (rgb >> 16) & 0xff;
+            const g = (rgb >>  8) & 0xff;
+            const b = (rgb >>  0) & 0xff;
+            return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        }
+
+        // Quiz Logic
+        function checkUndertone(type) {
+            const options = document.getElementById('quiz-options');
+            const resultBox = document.getElementById('quiz-result');
+            const resultTitle = document.getElementById('result-title');
+            const resultDesc = document.getElementById('result-desc');
+
+            options.classList.add('hidden');
+            resultBox.classList.remove('hidden');
+
+            if (type === 'cool') {
+                resultTitle.textContent = "Cool Undertone ❄️";
+                resultDesc.textContent = "Warna terbaik untukmu adalah warna bernuansa dingin seperti Emerald Green, Royal Blue, Lavender, Ruby Red, serta warna netral seperti Soft Grey dan Pure White. Logam perak (silver) akan sangat cocok di kulitmu!";
+            } else if (type === 'warm') {
+                resultTitle.textContent = "Warm Undertone ☀️";
+                resultDesc.textContent = "Warna terbaik untukmu adalah Earth Tone! Pilihlah Olive Green, Terracotta, Mustard, Mustard Yellow, Cream, dan Warm Brown. Perhiasan emas (gold) akan membuat kulitmu tampak semakin bersinar.";
+            } else {
+                resultTitle.textContent = "Neutral Undertone ⚖️";
+                resultDesc.textContent = "Selamat! Kulitmu sangat fleksibel. Kamu cocok mengenakan hampir semua warna dari spektrum dingin maupun hangat. Cobalah warna Soft Peach, Jade Green, atau Off-White.";
+            }
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-options').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+        }
+
+        // Init App
+        window.onload = () => {
+            initPresets();
+            analyzeHarmony();
+        };
+    </script>
+</body>
+</html>
